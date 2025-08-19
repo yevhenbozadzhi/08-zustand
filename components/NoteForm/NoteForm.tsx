@@ -7,7 +7,7 @@ import { NewNoteData } from "@/types/note";
 import {addNote} from '@/lib/api'
 import { useRouter } from "next/navigation";
 import { create } from 'zustand'
-import { useNoteDraftStore } from "@/lib/stores/noteStore";
+import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { useState } from "react";
 
 export interface NoteFormProps {
