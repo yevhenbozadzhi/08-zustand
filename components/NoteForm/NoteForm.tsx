@@ -10,11 +10,6 @@ import { create } from 'zustand'
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { useState } from "react";
 
-export interface NoteFormProps {
-  onClose: () => void;
-}
-
-
 const validationSchema = Yup.object({
   title: Yup.string()
     .min(3, "Minimum 3 characters")
@@ -90,7 +85,7 @@ export default function NoteForm() {
         <form action={handleSubmit} className={css.form}>
           <div className={css.formGroup}>
             <label htmlFor="title">Title</label>
-        <input defaultValue={draft?.title} onChange={handleChange} id="title" name="title" className={css.input} />
+        <input value={draft.title} onChange={handleChange} id="title" name="title" className={css.input} />
         {error.title && <span className={css.error}>{error.title}</span>}
         <div className={css.charCount}>
           {(draft?.title)}
@@ -98,7 +93,7 @@ export default function NoteForm() {
           </div>
           <div className={css.formGroup}>
             <label htmlFor="content">Content</label>
-            <textarea defaultValue={draft?.content} onChange={handleChange}
+            <textarea value={draft.content} onChange={handleChange}
               id="content"
               name="content"
               rows={8}
@@ -112,7 +107,7 @@ export default function NoteForm() {
 
           <div className={css.formGroup}>
             <label htmlFor="tag">Tag</label>
-            <select defaultValue={draft?.tag} onChange={handleChange} id="tag" name="tag" className={css.select}>
+            <select value={draft.tag} onChange={handleChange} id="tag" name="tag" className={css.select}>
               <option value="Todo">Todo</option>
               <option value="Work">Work</option>
               <option value="Personal">Personal</option>
@@ -137,8 +132,7 @@ export default function NoteForm() {
               Create note
             </button>
           </div>
-        </form>
-      )}
+        </form>)}
     
 
 

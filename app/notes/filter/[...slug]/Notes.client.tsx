@@ -9,17 +9,14 @@ import { fetchNotes, FetchNotesResponse } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
-import Modal from "@/components/Modal/Modal";
-import NoteForm from "@/components/NoteForm/NoteForm";
 import Link from "next/link";
 
 
 interface NotesClientProps {
-  initialData: FetchNotesResponse;
   tagId?: string;
 }
 
-export default function NotesClient({ initialData, tagId }: NotesClientProps) {
+export default function NotesClient({ tagId }: NotesClientProps) {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
@@ -33,7 +30,6 @@ export default function NotesClient({ initialData, tagId }: NotesClientProps) {
     queryKey: ["notes", page, debouncedSearchTerm, tagId],
     queryFn: () => fetchNotes(page, perPage, debouncedSearchTerm, tagId),
     placeholderData: keepPreviousData,
-    initialData: page === 1 && debouncedSearchTerm === "" ? initialData : undefined,
   });
 
 

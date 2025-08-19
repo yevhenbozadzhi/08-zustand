@@ -1,17 +1,15 @@
+import { Metadata } from 'next';
 import css from './Create.module.css';
 import NoteForm from '@/components/NoteForm/NoteForm';
 
 
-export async function generateMetadata() {
- 
-  return {
+export const metadata: Metadata = {
     title: `CreateNote`,
     description: 'The page where you can create your new Note',
-    url: 'https://notehub.com/action/create',
     openGraph: {
       title: `CreateNote`,
       description: 'The page where you can create your new Note',
-      url: 'https://notehub.com/action/create',
+      url: 'https://notehub.com/notes/action/create',
       images: [{
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
@@ -20,7 +18,7 @@ export async function generateMetadata() {
       }],
       type: 'article'
         }
-    }
+  
 }
 
 const CreateNote = async () => {

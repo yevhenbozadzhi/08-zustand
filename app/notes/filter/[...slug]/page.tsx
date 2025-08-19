@@ -2,13 +2,14 @@ import { fetchNotes} from '@/lib/api';
 import React from 'react';
 import NotesClient from './Notes.client';
 import css from './Notes.client.module.css';
+import { Metadata } from 'next';
 
 type Props = {
-  params: Promise<{ slug: string[], id: string }>,
+  params: Promise<{ slug: string[]}>,
 }
 
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   return {
     title: `Notes: ${slug[0]}`,
@@ -39,7 +40,7 @@ const NotesByCategory = async ({
   return (
     <div>
                 <h1 className={css.tags}>{tag}</h1>
-      {response?.notes?.length > 0 && <NotesClient initialData={response} tagId={ tag} />}
+      {response?.notes?.length > 0 && <NotesClient tagId={ tag} />}
     </div>
   );
 };
