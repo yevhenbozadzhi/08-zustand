@@ -82,57 +82,59 @@ export default function NoteForm() {
   }
 
   return (
-        <form action={handleSubmit} className={css.form}>
-          <div className={css.formGroup}>
-            <label htmlFor="title">Title</label>
+    <form action={handleSubmit} className={css.form}>
+      <div className={css.formGroup}>
+        <label htmlFor="title">Title</label>
         <input value={draft.title} onChange={handleChange} id="title" name="title" className={css.input} />
         {error.title && <span className={css.error}>{error.title}</span>}
         <div className={css.charCount}>
           {(draft?.title)}
         </div>
-          </div>
-          <div className={css.formGroup}>
-            <label htmlFor="content">Content</label>
-            <textarea value={draft.content} onChange={handleChange}
-              id="content"
-              name="content"
-              rows={8}
-              className={css.textarea}
+      </div>
+      <div className={css.formGroup}>
+        <label htmlFor="content">Content</label>
+        <textarea value={draft.content} onChange={handleChange}
+          id="content"
+          name="content"
+          rows={8}
+          className={css.textarea}
         />
         {error.content && <span className={css.error}>{error.content}</span>}
         <div className={css.charCount}>
           {(draft?.content)}
         </div>
-          </div>
+      </div>
 
-          <div className={css.formGroup}>
-            <label htmlFor="tag">Tag</label>
-            <select value={draft.tag} onChange={handleChange} id="tag" name="tag" className={css.select}>
-              <option value="Todo">Todo</option>
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="Meeting">Meeting</option>
-              <option value="Shopping">Shopping</option>
+      <div className={css.formGroup}>
+        <label htmlFor="tag">Tag</label>
+        <select value={draft.tag} onChange={handleChange} id="tag" name="tag" className={css.select}>
+          <option value="Todo">Todo</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Meeting">Meeting</option>
+          <option value="Shopping">Shopping</option>
         </select>
         {error.tag && <span className={css.error}>{error.tag}</span>}
-          </div>
-{error.form && <span className={css.error}>{error.form}</span>}
-          <div className={css.actions}>
-            <button
-              type="button"
-              className={css.cancelButton}
-              onClick={handleClose}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className={css.submitButton}
-            >
-              Create note
-            </button>
-          </div>
-        </form>)}
+      </div>
+      {error.form && <span className={css.error}>{error.form}</span>}
+      <div className={css.actions}>
+        <button
+          type="button"
+          className={css.cancelButton}
+          onClick={handleClose}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className={css.submitButton}
+        >
+          Create note
+        </button>
+      </div>
+    </form>
+  );
+}
     
 
 
